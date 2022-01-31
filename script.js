@@ -11,5 +11,5 @@ for (let i = 0; i < num.length; i++) {
 
 //////////////////
 
-console.log(String(mult**3).slice(0,2));
+console.log( String(mult ** 3).slice(0, 2) );
 
