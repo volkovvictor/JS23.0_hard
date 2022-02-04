@@ -1,13 +1,11 @@
 const isNumber = function(num) {
-   return !isNaN(parseFloat(num)) && isFinite(num);
+   return !isNaN(parseInt(num.trim())) && isFinite(num.trim());
 }
 
 let num = prompt('Введите число');
 
-while(!isNumber(num) || num === null) {
+while(num === null || !isNumber(num)) {
    num = prompt('Введите число');
 }
-
-num = num.trim();
 
 console.log(num);
