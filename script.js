@@ -13,11 +13,11 @@ const week = [
 ];
 
 week.forEach(function(item, index) {
-   if(index === date.getDay()) {
+   if (index === date.getDay()) {
       document.body.innerHTML += `<b>${item}</b><br>`;
       return;
    }
-   if(index === 0 || index === 6) {
+   if (index === 0 || index === 6) {
       document.body.innerHTML += `<i>${item}</i><br>`;
       return;
    }
