@@ -2,7 +2,7 @@
 
 const currentDate = function() {
    document.body.innerHTML = '';
-   
+
    const date = new Date(),
    year = date.getFullYear(),
    month = date.getMonth(),
@@ -77,5 +77,3 @@ const currentDate = function() {
 };
 
 const timer = setInterval(currentDate, 1000);
-
-currentDate();
