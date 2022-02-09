@@ -3,7 +3,7 @@
 const currentDate = function() {
    document.body.innerHTML = '';
 
-   const date = new Date(),
+   let date = new Date(),
    year = date.getFullYear(),
    month = date.getMonth(),
    day = date.getDate(),
@@ -11,31 +11,6 @@ const currentDate = function() {
    hours = date.getHours(),
    minutes = date.getMinutes(),
    seconds = date.getSeconds();
-
-   const months = [
-   'января',
-   'февраля',
-   'марта',
-   'апреля',
-   'мая',
-   'июня',
-   'июля',
-   'августа',
-   'сентября',
-   'октября',
-   'ноября',
-   'декабря'
-   ];
-
-   const week = [
-   'воскресенье',
-   'понедельник',
-   'вторник',
-   'среда',
-   'четверг',
-   'пятница',
-   'суббота'
-   ];
 
    const caseWord = function(time) {
       if(time % 10 >= 2 && time % 10 < 5 && (time < 12 || time > 15)) {
@@ -47,6 +22,14 @@ const currentDate = function() {
 
          return ['часов', 'минут', 'секунд'];
    };
+
+   const monthEnd = function(month) {
+      if(month === 'март' || month === 'август') {
+         return month + 'а';
+      }
+
+      return month.slice(0, month.length - 1) + 'я';
+   }
 
    const formatNumber = function(num) {
       if(num >= 1 && num < 10) {
@@ -60,8 +43,8 @@ const currentDate = function() {
       const div = document.createElement('div');
 
       div.innerHTML = `
-      <p>Сегодня ${week[dayOfWeek]}, 
-      ${day} ${months[month]} ${year} года, 
+      <p>Сегодня ${date.toLocaleString('ru', {weekday: 'long'})}, 
+      ${day} ${monthEnd(date.toLocaleString('ru', {month: 'long'}))} ${year} года, 
       ${hours} ${caseWord(hours)[0]} 
       ${minutes} ${caseWord(minutes)[1]} 
       ${seconds} ${caseWord(seconds)[2]}</p>
@@ -72,7 +55,6 @@ const currentDate = function() {
 
       return div;
    };
-
    document.body.append(createEl());
 };
 
